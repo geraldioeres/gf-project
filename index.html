@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday! - Gifa's Mind Village 🎂✨</title>
+  <meta name="description" content="A magical Gifa's Cells-themed birthday website celebrating your special day with interactive cells, photo memories, love meter, and secret gift box!">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Particles Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- NAVIGATION BAR -->
+  <header class="container">
+    <nav class="navbar" id="navbar">
+      <a href="#" class="nav-brand">
+        <span class="brain-icon">🧠</span> Gifa's Mind Village
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link">Home</a></li>
+        <li><a href="#mind-village" class="nav-link">Cells Board</a></li>
+        <li><a href="#gallery" class="nav-link">Memory Gallery</a></li>
+        <li><a href="#secret-gift" class="nav-link">Secret Gift</a></li>
+        <li><a href="#quiz" class="nav-link">Cell Quiz</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <div class="mind-status-badge" id="activeCellBadge">
+          <span>Active:</span> Love Cell ♥
+        </div>
+        <button class="btn-icon" id="soundToggleBtn" title="Toggle Sound Effects">🔊</button>
+        <button class="btn-icon" id="themeToggleBtn" title="Toggle Dark/Light Mode">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-text-content">
+        <div class="hero-subtitle-badge">
+          <span>✨</span> Happy Birthday Luvvvvv!!!! <span>✨</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Welcome to Gifa's <span class="highlight">Mind Village</span> 🥳🎂
+        </h1>
+        
+        <p class="hero-description">
+          Today is the most important holiday in the entire Mind Village! All your cute inner cells are gathered to celebrate you with infinite love, cake, and sweet memories.
+        </p>
+
+        <!-- LOVE METER BOOSTER -->
+        <div class="love-meter-box">
+          <div class="love-meter-header">
+            <span>Love Cell Level</span>
+            <span id="loveMeterVal">75%</span>
+          </div>
+          <div class="love-meter-bar-track">
+            <div class="love-meter-bar-fill" id="loveMeterFill"></div>
+          </div>
+          <button class="btn-boost-love" id="boostLoveBtn">
+            <span>💖</span> Boost Love Cell (+10%)
+          </button>
+        </div>
+      </div>
+
+      <!-- HERO POLAROID FRAME -->
+      <div class="hero-visual">
+        <!-- Floating Mini Cell Avatars -->
+        <div class="floating-cell-avatar cell-1">
+          <img src="images/love_cell.svg" alt="Love Cell">
+        </div>
+        <div class="floating-cell-avatar cell-2">
+          <img src="images/hungry_cell.svg" alt="Hungry Cell">
+        </div>
+
+        <div class="polaroid-hero-frame" id="heroPolaroid">
+          <div class="polaroid-hero-image-wrapper">
+            <img src="images/hero_photo.svg" alt="Birthday Girl Photo" data-photo-slot="hero" onerror="this.src='images/hero_photo.png'">
+          </div>
+          <div class="polaroid-caption">
+            Happy Birthday, My Fitra Aslami Ghifari! 💕
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN / BIRTHDAY BANNER SECTION -->
+    <section class="countdown-container">
+      <h2 class="countdown-title">⏰ When is Gifa's Birthday?</h2>
+      <div class="today-celebration-banner">
+        <span class="today-badge">🎉 IT'S TODAY! 🎂</span>
+        <p class="today-subtext">Happy Birthday My Love! Today is officially Gifa Day in Mind Village! 🥳💖</p>
+      </div>
+      <div class="countdown-grid" style="margin-top: 20px;">
+        <div class="countdown-card">
+          <span class="countdown-number" id="daysNum">IT'S</span>
+          <!-- <span class="countdown-label">Status</span> -->
+        </div>
+        <div class="countdown-card">
+          <span class="countdown-number" id="hoursNum" style="color: var(--deep-pink);">TODAY!</span>
+          <!-- <span class="countdown-label">Celebration</span> -->
+        </div>
+        <div class="countdown-card">
+          <span class="countdown-number" id="minsNum">GIFA</span>
+          <!-- <span class="countdown-label">Birthday Queen</span> -->
+        </div>
+        <div class="countdown-card">
+          <span class="countdown-number" id="secsNum" style="color: var(--vibrant-red);">DAY! 🎂</span>
+          <!-- <span class="countdown-label">Party Time</span> -->
+        </div>
+      </div>
+    </section>
+
+    <!-- MIND VILLAGE CELL CARDS -->
+    <section class="village-section" id="mind-village">
+      <div class="section-title-wrapper">
+        <span class="section-tag">Cell Headquarters</span>
+        <h2 class="section-main-title">Meet Your Birthday Mind Village Cells 🧠✨</h2>
+      </div>
+
+      <div class="cell-cards-grid">
+        
+        <!-- 1. LOVE CELL -->
+        <div class="cell-card" data-cell="love">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/love_cell.svg" alt="Love Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Love Cell</h3>
+              <span class="cell-role-badge role-love">Primary Cell</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "Sending infinity hearts to the birthday girl! You are the center of my world. 💕"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+        <!-- 2. HUNGRY CELL -->
+        <div class="cell-card" data-cell="hungry">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/hungry_cell.svg" alt="Hungry Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Hungry Cell</h3>
+              <span class="cell-role-badge role-hungry">Feast Director</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "Target acquired: Giant Birthday Cake! Calories don't count on your birthday! 🎂"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+        <!-- 3. RATIONAL CELL -->
+        <div class="cell-card" data-cell="rational">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/rational_cell.svg" alt="Rational Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Rational Cell</h3>
+              <span class="cell-role-badge role-rational">Chief Strategist</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "Calculated optimal outcome: 100% chance of making your dreams come true! 📊"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+        <!-- 4. EMOTIONAL CELL -->
+        <div class="cell-card" data-cell="emotional">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/emotional_cell.svg" alt="Emotional Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Emotional Cell</h3>
+              <span class="cell-role-badge role-emotional">Night Poet</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "Writing a tearfully romantic poem under the moonlight just for you... 🌙"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+        <!-- 5. FASHION CELL -->
+        <div class="cell-card" data-cell="fashion">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/fashion_cell.svg" alt="Fashion Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Fashion Cell</h3>
+              <span class="cell-role-badge role-fashion">Style Stylist</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "OOTD Rating: 100/10! You are looking absolutely stunning today Queen! 👑"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+        <!-- 6. NAUGHTY CELL -->
+        <div class="cell-card" data-cell="naughty">
+          <div class="cell-card-header">
+            <div class="cell-img-wrap">
+              <img src="images/naughty_cell.svg" alt="Naughty Cell">
+            </div>
+            <div class="cell-info">
+              <h3 class="cell-name">Naughty Cell</h3>
+              <span class="cell-role-badge role-naughty">Cheeky Cupid</span>
+            </div>
+          </div>
+          <div class="speech-bubble">
+            "Whispering a sneaky secret wish into your ear right now... 😈"
+          </div>
+          <div class="cell-card-actions">
+            <button class="btn-poke-cell">👉 Poke Cell</button>
+            <span class="poke-counter">0 Pokes</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MEMORY CELL PHOTO GALLERY -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-title-wrapper">
+        <span class="section-tag">Precious Moments</span>
+        <h2 class="section-main-title">Memory Cell Photo Gallery 📸</h2>
+      </div>
+
+      <!-- <div class="gallery-controls-bar">
+        <div class="gallery-controls-title">
+          <span>📷</span> Click any frame or use the Live Uploader to swap in real photos!
+        </div>
+        <button class="btn-upload-trigger" id="openUploaderBtn">
+          <span>📤</span> Open Live Photo Uploader
+        </button>
+      </div> -->
+
+      <div class="polaroid-grid">
+        
+        <!-- Polaroid 1 -->
+        <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_1.svg" alt="First Date Memory" data-photo-slot="memory_1" onerror="this.src='images/memory_1.png'">
+          </div>
+          <div class="polaroid-tag">First Sweet Date 💕</div>
+          <div class="polaroid-date">Memory #01</div>
+        </div>
+
+        <!-- Polaroid 2 -->
+        <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_2.svg" alt="Birthday Treats" data-photo-slot="memory_2" onerror="this.src='images/memory_2.png'">
+          </div>
+          <div class="polaroid-tag">Delicious Cake Time 🎂</div>
+          <div class="polaroid-date">Memory #02</div>
+        </div>
+
+        <!-- Polaroid 3 -->
+        <!-- <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_3.svg" alt="Romantic Trip" data-photo-slot="memory_3" onerror="this.src='images/memory_3.png'">
+          </div>
+          <div class="polaroid-tag">Unforgettable Trip ✈️</div>
+          <div class="polaroid-date">Memory #03</div>
+        </div> -->
+
+        <!-- Polaroid 4 -->
+        <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_4.svg" alt="Silly Laughs" data-photo-slot="memory_4" onerror="this.src='images/memory_4.png'">
+          </div>
+          <div class="polaroid-tag">Silly Laughs &amp; Joy 😂</div>
+          <div class="polaroid-date">Memory #03</div>
+        </div>
+
+        <!-- Polaroid 5 -->
+        <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_5.svg" alt="Special Present" data-photo-slot="memory_5" onerror="this.src='images/memory_5.png'">
+          </div>
+          <div class="polaroid-tag">Special Birthday Gift 🎁</div>
+          <div class="polaroid-date">Memory #04</div>
+        </div>
+
+        <!-- Polaroid 6 -->
+        <!-- <div class="polaroid-item">
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory_6.svg" alt="Stargazing Night" data-photo-slot="memory_6" onerror="this.src='images/memory_6.png'">
+          </div>
+          <div class="polaroid-tag">Cozy Night Together 🌙</div>
+          <div class="polaroid-date">Memory #06</div>
+        </div> -->
+
+      </div>
+    </section>
+
+    <!-- SECRET GIFT BOX SECTION -->
+    <section class="gift-section" id="secret-gift">
+      <div class="section-title-wrapper">
+        <span class="section-tag">Special Secret</span>
+        <h2 class="section-main-title">Unwrap Your Secret Birthday Box 🎁</h2>
+      </div>
+
+      <div class="gift-box-wrapper" id="giftBox">
+        <div class="gift-box">
+          <div class="gift-box-base">
+            <div class="gift-box-ribbon-v"></div>
+            <div class="gift-box-ribbon-h"></div>
+          </div>
+          <div class="gift-box-lid">
+            <div class="gift-box-ribbon-v"></div>
+            <div class="gift-bow">🎀</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="gift-hint-text">✨ Tap the Gift Box to Open Your Birthday Letter! ✨</p>
+    </section>
+
+
+  </main>
+
+  <!-- SECRET LOVE LETTER MODAL -->
+  <div class="modal-overlay" id="loveLetterModal">
+    <div class="love-letter-modal">
+      <button class="btn-close-modal" id="closeLetterBtn">&times;</button>
+      
+      <div class="letter-header">
+        <h2 class="letter-title">💌 A Secret Letter from Mind Village</h2>
+      </div>
+
+      <div class="letter-body">
+        Dearest Sunshine,
+
+        Happy Birthday! All the cells in your Mind Village are cheering for you today.
+
+        Love Cell wants to remind you how deeply loved you are every single day. Hungry Cell has approved infinite slices of birthday cake. Emotional Cell saved every sweet memory we created together, and Rational Cell calculated that this upcoming year will be your happiest one yet!
+
+        Thank you for being the most incredible, beautiful, and thoughtful person in the world. May your day be filled with warm smiles, laughter, and magical surprises!
+
+        With all my love,
+      </div>
+
+      <div class="letter-signature">
+        Always Yours ♥
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE PHOTO UPLOADER MODAL -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="love-letter-modal uploader-modal-content">
+      <button class="btn-close-modal" id="closeUploaderBtn">&times;</button>
+      
+      <h2 style="font-family: var(--font-heading); color: var(--deep-pink); text-align: center;">📸 Live Photo Replacer</h2>
+      <p style="font-size: 0.9rem; color: var(--text-muted); text-align: center;">Choose which frame slot you want to update, then select or drag a photo!</p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <label for="targetSlotSelect" style="font-weight: bold; font-size: 0.9rem;">Select Frame Slot:</label>
+        <select id="targetSlotSelect" style="padding: 10px; border-radius: 8px; border: 2px solid var(--pastel-blue); font-family: var(--font-body);">
+          <option value="hero">Hero Main Photo Frame</option>
+          <option value="memory_1">Memory #01 - First Sweet Date</option>
+          <option value="memory_4">Memory #02 - Silly Laughs &amp; Joy</option>
+          <option value="memory_5">Memory #03 - Special Birthday Gift</option>
+          <option value="memory_2">Memory #04 - Delicious Cake Time</option>
+          <option value="memory_3">Memory #05 - Unforgettable Trip</option>
+          <option value="memory_6">Memory #06 - Cozy Night Together</option>
+        </select>
+      </div>
+
+      <div class="drop-zone" id="dropZone">
+        <div style="font-size: 2.5rem; margin-bottom: 8px;">🖼️</div>
+        <p style="font-family: var(--font-accent); font-weight: bold;">Drag &amp; Drop Photo Here</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted);">or click below to browse</p>
+        <input type="file" id="photoFileInput" accept="image/*" style="display: none;">
+        <button onclick="document.getElementById('photoFileInput').click()" style="margin-top: 14px; background: var(--pastel-blue); color: white; border: none; padding: 8px 18px; border-radius: 20px; font-weight: bold; cursor: pointer;">
+          Browse File
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>Created with <span style="color: #FF0054;">♥</span> by Ge for my Beloved Gifa ✨</p>
+    </div>
+  </footer>
+
+  <!-- Javascript -->
+  <script src="script.js"></script>
+</body>
+</html>
