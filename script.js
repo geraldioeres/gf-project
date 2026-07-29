@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cell sound mapping (.opus files)
   const cellSounds = {
-    love: ['sound/love-cell.opus', 'sound/love-cell2.opus'],
+    love: ['sound/love-cell.opus'],
     love_max: ['sound/effect1.opus'],
     hungry: ['sound/hungry-cell.opus'],
     rational: ['sound/rational-cell.opus'],
@@ -361,11 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentAudioMap = {};
 
   function playCellSound(cellKey) {
-    // If poking Love Cell at maximum love (100%), use effect1.opus!
-    if (cellKey === 'love' && loveLevel >= 100) {
-      cellKey = 'love_max';
-    }
-
     const soundList = cellSounds[cellKey];
     if (!soundList || soundList.length === 0) return;
 
