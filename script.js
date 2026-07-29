@@ -291,6 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (loveLevel === 100) {
         loveMeterVal.textContent = '100% (MAXIMUM LOVE!) ♥';
         triggerConfetti(rect.left + rect.width / 2, rect.top);
+        
+        // Play effect1.opus on reaching Maximum Love!
+        playCellSound('love_max');
       }
     });
   }
@@ -344,6 +347,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const activeCellBadge = document.getElementById('activeCellBadge');
 
+  // Cell sound mapping (.opus files)
+  const cellSounds = {
+    love: ['sound/love-cell.opus', 'sound/love-cell2.opus'],
+    love_max: ['sound/effect1.opus'],
+    hungry: ['sound/hungry-cell.opus'],
+    rational: ['sound/rational-cell.opus'],
+    emotional: ['sound/emotion-cell.opus'],
+    fashion: ['sound/fashion-cell.opus'],
+    naughty: ['sound/naughty-cell.opus', 'sound/naughty-cell2.opus']
+  };
+
+  const currentAudioMap = {};
+
+  function playCellSound(cellKey) {
+    // If poking Love Cell at maximum love (100%), use effect1.opus!
+    if (cellKey === 'love' && loveLevel >= 100) {
+      cellKey = 'love_max';
+    }
+
+    const soundList = cellSounds[cellKey];
+    if (!soundList || soundList.length === 0) return;
+
+    // Select random sound if cell has multiple sound variations
+    const selectedSrc = soundList[Math.floor(Math.random() * soundList.length)];
+
+    // Stop current sound for this cell if it's already playing
+    if (currentAudioMap[cellKey]) {
+      currentAudioMap[cellKey].pause();
+      currentAudioMap[cellKey].currentTime = 0;
+    }
+
+    const cellAudio = new Audio(selectedSrc);
+    currentAudioMap[cellKey] = cellAudio;
+    cellAudio.play().catch(err => console.log('Audio playback info:', err));
+  }
+
   document.querySelectorAll('.cell-card').forEach(card => {
     const cellKey = card.getAttribute('data-cell');
     const pokeBtn = card.querySelector('.btn-poke-cell');
@@ -356,7 +395,9 @@ document.addEventListener('DOMContentLoaded', () => {
         pokes++;
         if (counter) counter.textContent = `${pokes} Pokes`;
 
+        // Play synth pop effect + custom cell voice sound
         audio.playPop(400 + Math.random() * 200);
+        playCellSound(cellKey);
 
         // Update speech bubble with random quote
         if (cellQuotes[cellKey]) {
